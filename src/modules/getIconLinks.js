@@ -8,8 +8,8 @@ function hrefIsIcon(href) {
 function getIconLinks(rootUrl, dom) {
     var $ = cheerio.load(dom);
     const icons = [];
-    $('link').each(function(i, elem) {
-        const href = $(this).attr('href');
+    $('link').each(function(index, element) {
+        const href = $(element).attr('href');
         const resolved = url.resolve(rootUrl, href);
         if (!hrefIsIcon(resolved)) {
             return;
