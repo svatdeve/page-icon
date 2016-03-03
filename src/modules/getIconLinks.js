@@ -2,7 +2,7 @@ const cheerio = require('cheerio');
 const url = require('url');
 
 function hrefIsIcon(href) {
-    return /((icon.*\.(png|jpg))|(\w+\.ico))$/.test(href);
+    return /((icon.*\.(png|jpg))|(\w+\.ico))/.test(href);
 }
 
 function getDomainUrl(someUrl) {

@@ -2,7 +2,7 @@ const axios = require('axios');
 const url = require('url');
 
 function getExtension(downloadUrl) {
-    return downloadUrl.match(/\.\w+$/)[0];
+    return downloadUrl.match(/\.(png|jpg|ico)/)[0];
 }
 
 function getSiteDomain(siteUrl) {
