@@ -13,8 +13,7 @@
   "license": "MIT",
   "dependencies": {
     "axios": "^0.9.1",
-    "cheerio": "^0.20.0",
-    "tmp": "0.0.28"
+    "cheerio": "^0.20.0"
   },
   "devDependencies": {
     "babel-cli": "^6.6.4",

@@ -1,36 +1,12 @@
 const axios = require('axios');
-const fs = require('fs');
-const path = require('path');
-const tmp = require('tmp');
+const url = require('url');
 
-tmp.setGracefulCleanup();
-
-function getTempDir() {
-    return new Promise((resolve, reject) => {
-        tmp.dir({unsafeCleanup: true}, (error, dirPath) => {
-            if (error) {
-                reject(error);
-                return;
-            }
-            resolve(dirPath);
-        });
-    });
+function getExtension(downloadUrl) {
+    return downloadUrl.match(/\.\w+$/)[0];
 }
 
-function saveToFile(data) {
-    return getTempDir()
-        .then(dirPath => {
-            return new Promise(function(resolve, reject) {
-                const saveDir = path.join(dirPath, 'someicon.ico');
-                fs.writeFile(saveDir, data, function(error) {
-                    if (error) {
-                        reject(error);
-                        return;
-                    }
-                    resolve(saveDir);
-                });
-            });
-        });
+function getSiteDomain(siteUrl) {
+    return url.parse(siteUrl).hostname;
 }
 
 function downloadIcon(iconUrl) {
@@ -52,7 +28,11 @@ function downloadIcon(iconUrl) {
         if (!iconData) {
             return new Promise(resolve => resolve());
         }
-        return saveToFile(iconData);
+        return {
+            source: getSiteDomain(iconUrl),
+            type: getExtension(iconUrl),
+            data: iconData
+        };
     });
 }
 

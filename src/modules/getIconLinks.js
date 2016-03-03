@@ -13,19 +13,18 @@ function getDomainUrl(someUrl) {
 
 function getIconLinks(rootUrl, dom) {
     var $ = cheerio.load(dom);
-    const icons = [];
+    const iconLinks = [];
     $('link').each(function(index, element) {
         const href = $(element).attr('href');
         const resolved = url.resolve(rootUrl, href);
         if (!hrefIsIcon(resolved)) {
             return;
         }
-        icons.push(resolved);
+        iconLinks.push(resolved);
     });
 
-    icons.push(url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png'));
-
-    return icons;
+    iconLinks.push(url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png'));
+    return iconLinks;
 }
 
 module.exports = getIconLinks;
