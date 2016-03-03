@@ -4,7 +4,7 @@
   "description": "Find the best icon for a web page",
   "main": "lib/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "mocha"
   },
   "author": "Goh Jia Hao",
   "license": "MIT",
@@ -12,7 +12,10 @@
     "axios": "^0.9.1",
     "cheerio": "^0.20.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "mocha": "^2.4.5"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/jiahaog/page-icon.git"
