@@ -1,4 +1,4 @@
-const pageIcon = require('./../lib/index');
+const pageIcon = require('./../src/index');
 const fs = require("fs"); //Load the filesystem module
 const chai = require('chai');
 const expect = chai.expect;
