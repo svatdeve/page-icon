@@ -1,3 +1,5 @@
+import 'source-map-support/register';
+
 const getPage = require('./modules/getPage');
 const getIconLinks = require('./modules/getIconLinks');
 const downloadIcons = require('./modules/downloadIcons');
