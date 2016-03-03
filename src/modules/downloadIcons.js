@@ -22,7 +22,7 @@ function saveToFile(data) {
         .then(dirPath => {
             return new Promise(function(resolve, reject) {
                 const saveDir = path.join(dirPath, 'someicon.ico');
-                fs.writeFile(saveDir, data, function (error) {
+                fs.writeFile(saveDir, data, function(error) {
                     if (error) {
                         reject(error);
                         return;
@@ -34,23 +34,34 @@ function saveToFile(data) {
 }
 
 function downloadIcon(iconUrl) {
-    const iconData = new Promise(function (resolve, reject) {
+    const iconData = new Promise(function(resolve, reject) {
         axios.get(iconUrl, {responseType: 'arraybuffer'})
             .then(function(response) {
                 resolve(response.data);
             })
             .catch(function(error) {
+                if (error.status === 404) {
+                    resolve();
+                    return;
+                }
                 reject(error);
-            })
-
+            });
     });
 
-    return iconData.then(saveToFile);
+    return iconData.then(iconData => {
+        if (!iconData) {
+            return new Promise(resolve => resolve());
+        }
+        return saveToFile(iconData);
+    });
 }
 
 function downloadIcons(iconUrls) {
     const promises = iconUrls.map(downloadIcon);
-    return Promise.all(promises);
+    return Promise.all(promises)
+        .then((iconPaths) => {
+            return iconPaths.filter(element => !!element);
+        });
 }
 
 module.exports = downloadIcons;
