@@ -6,7 +6,7 @@
   "scripts": {
     "build": "babel src -d lib --source-maps",
     "watch": "babel src -d lib --source-maps --watch",
-    "test": "mocha --compilers js:babel-register",
+    "test": "npm run build && mocha --compilers js:babel-register",
     "coverage": "istanbul cover _mocha -- --compilers js:babel-register"
   },
   "author": "Goh Jia Hao",
