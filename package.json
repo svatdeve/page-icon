@@ -1,0 +1,24 @@
+{
+  "name": "page-icon",
+  "version": "0.0.1",
+  "description": "Find the best icon for a web page",
+  "main": "lib/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Goh Jia Hao",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.9.1",
+    "cheerio": "^0.20.0"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jiahaog/page-icon.git"
+  },
+  "bugs": {
+    "url": "https://github.com/jiahaog/page-icon/issues"
+  },
+  "homepage": "https://github.com/jiahaog/page-icon#readme"
+}
