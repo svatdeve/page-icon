@@ -1,4 +1,4 @@
-const pageIcon = require('./../src/index');
+const pageIcon = require('./../lib/index');
 const chai = require('chai');
 const fs = require('fs');
 const path = require('path');
