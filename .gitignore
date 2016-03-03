@@ -3,6 +3,7 @@
 
 # Node.js
 lib
+coverage
 
 # Logs
 logs
