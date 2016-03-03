@@ -6,8 +6,9 @@
   "scripts": {
     "build": "babel src -d lib --source-maps",
     "watch": "babel src -d lib --source-maps --watch",
-    "test": "npm run build && mocha --compilers js:babel-register",
-    "coverage": "istanbul cover _mocha -- --compilers js:babel-register"
+    "test": "npm run build && mkdir -p out && mocha --compilers js:babel-register",
+    "coverage": "istanbul cover _mocha -- --compilers js:babel-register",
+    "clean": "rm -rf out"
   },
   "author": "Goh Jia Hao",
   "license": "MIT",
