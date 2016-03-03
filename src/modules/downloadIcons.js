@@ -7,7 +7,7 @@ tmp.setGracefulCleanup();
 
 function getTempDir() {
     return new Promise((resolve, reject) => {
-        tmp.dir((error, dirPath) => {
+        tmp.dir({unsafeCleanup: true}, (error, dirPath) => {
             if (error) {
                 reject(error);
                 return;
