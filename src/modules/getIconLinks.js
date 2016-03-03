@@ -11,20 +11,19 @@ function getDomainUrl(someUrl) {
     return parsedUrl.format()
 }
 
-function linkTagLinks($, rootUrl) {
+function linkTagLinks($) {
     const links = [];
     $('link').each(function(index, element) {
         const href = $(element).attr('href');
-        const resolved = url.resolve(rootUrl, href);
-        if (!hrefIsIcon(resolved)) {
+        if (!hrefIsIcon(href)) {
             return;
         }
-        links.push(resolved);
+        links.push(href);
     });
     return links;
 }
 
-function metaTagLinks($, rootUrl) {
+function metaTagLinks($) {
     const links = [];
     $('meta').each((index, element) => {
         const property = $(element).attr('property');
@@ -33,8 +32,7 @@ function metaTagLinks($, rootUrl) {
         }
 
         const graphImageUrl = $(element).attr('content');
-        const resolved = url.resolve(rootUrl, graphImageUrl);
-        links.push(resolved);
+        links.push(graphImageUrl);
     });
 
     return links
@@ -44,8 +42,12 @@ function getIconLinks(rootUrl, dom) {
     var $ = cheerio.load(dom);
     let iconLinks = [];
 
-    iconLinks = iconLinks.concat(linkTagLinks($, rootUrl));
-    iconLinks = iconLinks.concat(metaTagLinks($, rootUrl));
+    iconLinks = iconLinks.concat(linkTagLinks($));
+    iconLinks = iconLinks.concat(metaTagLinks($));
+
+    iconLinks = iconLinks.map(iconLink => {
+        return url.resolve(rootUrl, iconLink);
+    });
 
     iconLinks.push(url.resolve(getDomainUrl(rootUrl), 'apple-touch-icon.png'));
     return iconLinks;
