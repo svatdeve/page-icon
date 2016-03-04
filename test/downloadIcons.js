@@ -1,7 +1,10 @@
 const downloadIcon = require('./../lib/modules/download/downloadIcon');
 const fs = require('fs');
+const path = require('path');
 
 const ICON_URL = 'https://web.whatsapp.com/favicon.ico';
+
+const ICON_PATH = path.join(__dirname, '..','out', 'test_icon.ico');
 
 describe('Download Icons', function() {
     this.timeout(10000);
@@ -11,7 +14,7 @@ describe('Download Icons', function() {
                 if (!icon) {
                     throw 'Icon not found';
                 }
-                fs.writeFileSync(__dirname + 'testicon.ico', icon.data);
+                fs.writeFileSync(ICON_PATH, icon.data);
                 done();
             })
             .catch(done);
