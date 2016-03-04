@@ -1,5 +1,8 @@
 import 'source-map-support/register';
 
+// for promise problems with node v0.12
+require('babel-polyfill');
+
 const getPage = require('./modules/getPage');
 const getIconLinks = require('./modules/getIconLinks');
 const downloadIcons = require('./modules/download/downloadIcons');
