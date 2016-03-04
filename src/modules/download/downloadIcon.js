@@ -1,5 +1,6 @@
 const axios = require('axios');
 const url = require('url');
+const fileType = require('file-type');
 
 function getExtension(downloadUrl) {
     return downloadUrl.match(/\.(png|jpg|ico)/)[0];
@@ -11,7 +12,10 @@ function getSiteDomain(siteUrl) {
 
 function downloadIcon(iconUrl) {
     const iconData = new Promise(function(resolve, reject) {
-        axios.get(iconUrl, {responseType: 'arraybuffer'})
+        axios.get(iconUrl, {
+            responseType: 'arraybuffer',
+            //'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_11_2) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/48.0.2564.116 Safari/537.36'
+        })
             .then(function(response) {
                 resolve(response.data);
             })
@@ -26,22 +30,22 @@ function downloadIcon(iconUrl) {
 
     return iconData.then(iconData => {
         if (!iconData) {
-            return new Promise(resolve => resolve());
+            return;
         }
-        return {
-            source: getSiteDomain(iconUrl),
-            type: getExtension(iconUrl),
-            data: iconData
-        };
+
+        const fileDetails = fileType(iconData);
+
+        if (!fileDetails) {
+            return;
+        }
+
+        return Object.assign({
+            source: iconUrl,
+            name: getSiteDomain(iconUrl),
+            data: iconData,
+            size: iconData.length
+        }, fileDetails);
     });
 }
 
-function downloadIcons(iconUrls) {
-    const promises = iconUrls.map(downloadIcon);
-    return Promise.all(promises)
-        .then((iconPaths) => {
-            return iconPaths.filter(element => !!element);
-        });
-}
-
-module.exports = downloadIcons;
+module.exports = downloadIcon;

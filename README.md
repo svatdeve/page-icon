@@ -30,13 +30,16 @@ pageIcon(siteUrl)
 });
 ```
 
-#### Icon Object
+#### Example Icon Object
 
 ```javascript
-{
-    source: 'facebook.com', // domain of icon source
-    type: '.png', // string extension
-    data: DATA // buffer
+{ 
+    source: 'https://www.facebook.com/apple-touch-icon.png',
+    name: 'www.facebook.com',
+    data: <Buffer 89 50 4e ... >,
+    size: 1779,
+    ext: 'png',
+    mime: 'image/png' 
 }
 ```
 
