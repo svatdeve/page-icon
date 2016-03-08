@@ -14,6 +14,7 @@ const SITE_URLS = [
     'https://web.whatsapp.com'
 ];
 
+const HTTP_TEST_URL = 'http://web.whatsapp.com';
 const ICON_TYPE_URL = 'https://web.whatsapp.com';
 
 describe('Page Icon', function() {
@@ -49,6 +50,21 @@ describe('Page Icon', function() {
             .catch(done);
     });
 
+    it('Can try to https if nothing is found at http', function(done) {
+        pageIcon(HTTP_TEST_URL)
+            .then(function(icon) {
+                if (!icon) {
+                    throw `No icon found for url: ${siteUrl}`;
+                }
+                return icon;
+            })
+            .then(function(icon) {
+                expect(isIconValid(icon)).to.be.true;
+                done()
+            })
+            .catch(done);
+    });
+
     describe('Specification of preferred icon ext', function () {
         it('Type .png', function(done) {
             iconTypeTest('png', done);
@@ -57,7 +73,7 @@ describe('Page Icon', function() {
         it('Type .ico', function (done) {
             iconTypeTest('ico', done);
         });
-    })
+    });
 });
 
 function iconTypeTest(ext, callback) {
