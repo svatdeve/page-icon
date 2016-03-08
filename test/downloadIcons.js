@@ -8,7 +8,7 @@ const ICON_PATH = path.join(__dirname, '..','out', 'test_icon.ico');
 
 describe('Download Icons', function() {
     this.timeout(10000);
-    it('Can download Icons', function(done) {
+    it('Can download icons', function(done) {
         downloadIcon(ICON_URL)
             .then(icon => {
                 if (!icon) {
@@ -18,5 +18,5 @@ describe('Download Icons', function() {
                 done();
             })
             .catch(done);
-    })
+    });
 });

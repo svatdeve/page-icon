@@ -14,6 +14,8 @@ const SITE_URLS = [
     'https://web.whatsapp.com'
 ];
 
+const ICON_TYPE_URL = 'https://web.whatsapp.com';
+
 describe('Page Icon', function() {
     this.timeout(10000);
 
@@ -45,5 +47,33 @@ describe('Page Icon', function() {
                 done();
             })
             .catch(done);
+    });
+
+    describe('Specification of preferred icon ext', function () {
+        it('Type .png', function(done) {
+            iconTypeTest('png', done);
+        });
+
+        it('Type .ico', function (done) {
+            iconTypeTest('ico', done);
+        });
     })
 });
+
+function iconTypeTest(ext, callback) {
+    pageIcon(ICON_TYPE_URL, {ext: ext})
+        .then(function(icon) {
+            if (!icon) {
+                throw `No icon found for url: ${ICON_TYPE_URL}`;
+            }
+            return icon;
+        })
+        .then(function(icon) {
+            expect(icon.ext).to.equal(ext, `Should get a ${ext} from WhatsApp`);
+            return icon;
+        })
+        .then(() => {
+            callback();
+        })
+        .catch(callback);
+}

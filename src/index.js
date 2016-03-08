@@ -8,13 +8,18 @@ const getIconLinks = require('./modules/getIconLinks');
 const downloadIcons = require('./modules/download/downloadIcons');
 const findBestIcon = require('./modules/findBestIcon');
 
-function main(pageUrl) {
+function main(pageUrl, options={}) {
+
+    const bestWithPref = function(icons) {
+          return findBestIcon(icons, options.ext);
+    };
+
     return getPage(pageUrl)
         .then(function (dom) {
             return getIconLinks(pageUrl, dom);
         })
         .then(downloadIcons)
-        .then(findBestIcon)
+        .then(bestWithPref)
 }
 
 module.exports = main;

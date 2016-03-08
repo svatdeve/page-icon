@@ -8,8 +8,22 @@ function sortIconsBySize(icons) {
     });
 }
 
-function findBestIcon(icons) {
-    return sortIconsBySize(icons)[0];
+/**
+ *
+ * @param icons
+ * @param [ext]
+ */
+function findBestIcon(icons, ext) {
+    const sorted = sortIconsBySize(icons);
+    if (ext) {
+        for (let icon of sorted) {
+            if (icon.ext === ext) {
+                return icon;
+            }
+        }
+    }
+
+    return sorted[0];
 }
 
 module.exports = findBestIcon;
