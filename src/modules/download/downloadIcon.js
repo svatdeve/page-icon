@@ -34,10 +34,12 @@ function downloadIcon(iconUrl) {
         }
 
         const fileDetails = fileType(iconData);
-
         if (!fileDetails) {
-            return;
+            return null;
         }
+
+        // add `.` to ext
+        fileDetails.ext = `.${fileDetails.ext}`;
 
         return Object.assign({
             source: iconUrl,

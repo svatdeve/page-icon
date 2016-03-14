@@ -67,11 +67,11 @@ describe('Page Icon', function() {
 
     describe('Specification of preferred icon ext', function () {
         it('Type .png', function(done) {
-            iconTypeTest('png', done);
+            iconTypeTest('.png', done);
         });
 
         it('Type .ico', function (done) {
-            iconTypeTest('ico', done);
+            iconTypeTest('.ico', done);
         });
     });
 });

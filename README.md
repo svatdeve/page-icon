@@ -42,7 +42,7 @@ pageIcon(siteUrl)
     name: 'www.facebook.com',
     data: <Buffer 89 50 4e ... >,
     size: 1779,
-    ext: 'png',
+    ext: '.png',
     mime: 'image/png' 
 }
 ```
