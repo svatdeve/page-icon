@@ -30,7 +30,7 @@ function downloadIcon(iconUrl) {
 
     return iconData.then(iconData => {
         if (!iconData) {
-            return;
+            return null;
         }
 
         const fileDetails = fileType(iconData);

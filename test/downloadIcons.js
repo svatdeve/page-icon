@@ -7,6 +7,7 @@ const expect = chai.expect;
 
 const ICON_URL = 'https://web.whatsapp.com/favicon.ico';
 const NOT_ICON_URL = 'http://jiahaog.github.io/nativefier-icons';
+const STATUS_NOT_FOUND_URL = 'http://jiahaog.github.io/nativefier-icons/pleasegivemea404';
 
 const ICON_PATH = path.join(__dirname, '..','out', 'test_icon.ico');
 
@@ -31,5 +32,14 @@ describe('Download Icons', function() {
                 done();
             })
             .catch(done);
-    })
+    });
+
+    it('Will return null if the icon ', function(done) {
+        downloadIcon(STATUS_NOT_FOUND_URL)
+            .then(icon => {
+                expect(icon).to.equal(null, 'Invalid icon should return null');
+                done();
+            })
+            .catch(done);
+    });
 });
