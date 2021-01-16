@@ -34,7 +34,7 @@ describe('Download Icons', function() {
             .catch(done);
     });
 
-    it('Will return null if the icon ', function(done) {
+    it('Will return null if the URL returns a 404', function(done) {
         downloadIcon(STATUS_NOT_FOUND_URL)
             .then(icon => {
                 expect(icon).to.equal(null, 'Invalid icon should return null');
