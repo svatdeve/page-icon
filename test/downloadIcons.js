@@ -6,8 +6,8 @@ const chai = require('chai');
 const expect = chai.expect;
 
 const ICON_URL = 'https://web.whatsapp.com/favicon.ico';
-const NOT_ICON_URL = 'http://jiahaog.github.io/nativefier-icons';
-const STATUS_NOT_FOUND_URL = 'http://jiahaog.github.io/nativefier-icons/pleasegivemea404';
+const NOT_ICON_URL = 'http://nativefier.github.io/nativefier-icons';
+const STATUS_NOT_FOUND_URL = 'http://nativefier.github.io/nativefier-icons/pleasegivemea404';
 
 const ICON_PATH = path.join(__dirname, '..','out', 'test_icon.ico');
 

@@ -1,7 +1,7 @@
 # Page Icon
 
-[![Build Status](https://travis-ci.org/jiahaog/page-icon.svg?branch=master)](https://travis-ci.org/jiahaog/page-icon)
-[![Code Climate](https://codeclimate.com/github/jiahaog/page-icon/badges/gpa.svg)](https://codeclimate.com/github/jiahaog/page-icon)
+[![Build Status](https://travis-ci.org/nativefier/page-icon.svg?branch=master)](https://travis-ci.org/nativefier/page-icon)
+[![Code Climate](https://codeclimate.com/github/nativefier/page-icon/badges/gpa.svg)](https://codeclimate.com/github/nativefier/page-icon)
 
 A library to find the highest resolution website logo for a given url.
 

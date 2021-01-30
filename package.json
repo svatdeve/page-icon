@@ -28,12 +28,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jiahaog/page-icon.git"
+    "url": "git+https://github.com/nativefier/page-icon.git"
   },
   "bugs": {
-    "url": "https://github.com/jiahaog/page-icon/issues"
+    "url": "https://github.com/nativefier/page-icon/issues"
   },
-  "homepage": "https://github.com/jiahaog/page-icon#readme",
+  "homepage": "https://github.com/nativefier/page-icon#readme",
   "babel": {
     "presets": [
       "es2015"
