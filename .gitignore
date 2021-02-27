@@ -4,6 +4,7 @@
 # Node.js
 lib
 coverage
+*.tgz
 
 # Logs
 logs
@@ -39,3 +40,7 @@ node_modules
 *.iml
 out
 gen
+
+# Test data
+test/*.ico
+test/*.png
