@@ -13,7 +13,7 @@
   "author": "Goh Jia Hao",
   "license": "MIT",
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^1.6.3",
     "cheerio": "^1.0.0-rc.5",
     "file-type": "^16.2.0"
   },
